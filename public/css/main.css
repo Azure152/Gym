@@ -1,0 +1,935 @@
+/* --------------------------------------------------------------------
+    Animaciones
+-------------------------------------------------------------------- */
+
+@keyframes toDown {
+    from { transform: translateY(0px); }
+    to { transform: translateY(100vh); }
+}
+@keyframes ToRight {
+    from {opacity: 0; padding-inline: 0;}
+    to {opacity: 1; padding-inline: 15px}
+}
+@keyframes load {
+    0% { transform: translate(0%); }
+    50% { transform: translate(400%); }
+    100% { transform: translate(0%); }
+}
+
+/* --------------------------------------------------------------------
+    Principales
+-------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-red: rgba(230, 32, 45, 1);
+    --color-red2: rgba(200, 0, 0, 1);
+    --color-orange: rgba(240, 160, 30, 1);
+}
+body {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: max-content;
+    /*height: 100vh;*/
+}
+#main {
+    display: flex;
+    min-height: max-content;
+}
+
+/* --------------------------------------------------------------------
+    Generales
+-------------------------------------------------------------------- */
+
+.bgc-red {
+    background-color: var(--color-red) !important;
+    color: #fff !important;
+    border: 2px solid var(--color-red) !important;
+}
+
+/* --------------------------------------------------------------------
+    Pantalla de carga
+-------------------------------------------------------------------- */
+
+.LoadScreen {
+    background-color: #efefef;
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    font-family: "Segoe UI";
+}
+.LoadScreen h1 > span {
+    display: block;
+    margin: 0;
+    padding: 0;
+    color: var(--color-red);
+    font-size: 5rem;
+    letter-spacing: 15px;
+    /*border: 3px double #000;*/
+    text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+}
+
+.LoadScreen.remove {
+    opacity: 0;
+    transition: 1s opacity ease-out;
+}
+.LoadScreen > div > h1 {
+    width: 400px;
+    max-width: 70vw;
+    margin: 0;
+    text-align: center;
+}
+.LoadScreen > div > h1 > span > img {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+}
+.LoadScreen > div > h1 > div {
+    height: 7px;
+    background-color: rgba(210, 210, 210, 1);
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.LoadScreen > div > h1 > div::after {
+    content: " ";
+    /* position: absolute; */
+    width: 20%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    border-radius: 5px;
+    background-color: var(--color-red);
+    animation-name: load;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    /*box-shadow:  0 0 5px 0 #fff;    */
+}
+
+/* --------------------------------------------------------------------
+    Page-content
+-------------------------------------------------------------------- */
+
+.page-content {
+    margin: 0;
+    flex-basis: auto;
+    width: 100%;
+    overflow-y: auto;
+    min-height: 100vh;
+    height: 695px;
+}
+::-webkit-scrollbar {
+    /*background-color: #e0e0e0;*/
+    width: 15px;
+    box-shadow: inset 0 0 1px 0 #777 ;
+}
+::-webkit-scrollbar-track {
+    margin-block: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-inline: 3px solid #e0e0e0;
+    border-radius: 7px;
+}
+
+/* --------------------------------------------------------------------
+    Barra de navegacion
+-------------------------------------------------------------------- */
+
+/* <===== ======= Navegacion Horizontal ======= =====> */
+.nav-horizontal {
+    background-color: var(--color-red);
+    display: flex;
+    justify-content: space-between;
+}
+.nav-horizontal > .nav-right {
+    justify-self: flex-end;
+    margin-left: auto;
+}
+.nav-horizontal > div > a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Segoe UI;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0.3rem 1rem;
+}
+.nav-horizontal  a:hover, .nav-horizontal a:focus {
+    background-color: var(--color-red2);
+}
+/* <===== ======= Navegacion Lateral ======= =====> */
+.nav-lateral {
+    background-color: var(--color-red);
+    min-height: max-content;
+    height: 100vh;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0 0 5px -1px #777;
+    z-index: 1000;
+}
+.nav-top, .nav-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-top a, .nav-bottom a, .nav-top img, .nav-bottom img {
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    position: relative;
+    outline: none;
+    font-family: "Segoe UI";
+}
+.nav-top .logo, .nav-bottom .logo {
+}
+.nav-top .logo > img, .nav-bottom .logo > img {
+    width: 100%;
+    height: 100%;
+    padding: 6px 0px;
+}
+.nav-top a:hover, .nav-bottom a:hover, .nav-top a:focus, .nav-bottom a:focus {
+    background-color: var(--color-red2);
+    box-shadow: inset 3px 0 0 -1px #fff, inset 7px 0 3px -3px #f00;
+}
+.nav-top a:hover::after , .nav-bottom a:hover::after, .nav-top a:focus::after , .nav-bottom a:focus::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 15px;
+    content: attr(afterContent);
+    position: absolute;
+    left: 100%;
+    min-height: max-content;
+    height: 90%;
+    width: max-content;
+    max-width: 500px;
+    background-color: #444;
+    border: 1px solid #777;
+    z-index: 10;
+    animation-name: ToRight;
+    animation-duration: 0.7s;
+}
+.nav-top a:hover::after::after {
+    content: " ";
+    background-color: #0f0;
+    position: absolute;
+    left: 100%;
+}
+
+/* --------------------------------------------------------------------
+    Campos de los formularios
+-------------------------------------------------------------------- */
+
+.field-input-container {
+    padding: 0;
+    /* border: 1px solid var(--color-red); */
+}
+.field-input-container > legend {
+    min-width: max-content;
+    min-width: 40%;
+    margin-inline: 1rem;
+    color: #fff;
+    font-size: 1.3rem;
+    padding-inline: 1rem;
+    border-radius: 100rem;
+    background-color: var(--color-red);
+    box-shadow: 0 6px 5px -5px #f00;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+.field-input-container:focus-within {
+    box-shadow: 0 0 3px -1px var(--color-red);
+    border-color: #f40;
+}
+.field-input-container:focus-within > legend {
+    padding-inline: 2rem;
+    /* margin-inline: auto; */
+    background-color: #f00;
+    min-width: 50%;
+}
+.field-input-container > legend > span {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+.field-input-container > input, .field-input-container > select, .field-input-container > textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 5px 1rem;
+    outline: none;
+    font-size: 1.1rem;
+    background-color: transparent;
+}
+.field-input-container > textarea {
+    resize: none;
+    width: 100%;
+}
+.field-input-container > input::placeholder {
+    font-style: italic;
+}
+
+
+.label-input-container, .label-input-container .btn, .label-input-container input, .label-input-container select, .label-input-container textarea {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------
+    Botones
+-------------------------------------------------------------------- */
+
+.btn {
+    background-color: transparent;
+    border: 2px inset #000;
+    font-family: Segoe UI;
+    font-weight: 500;
+    padding: 5px 1rem;
+    color: #000;
+    outline: none;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+.btn-safe {
+    border-color: #f00;
+    color: var(--color-red);
+    font-size: 1.1rem;
+}
+.btn-safe:hover, .btn-safe:focus {
+    color: #fff;
+    background-color: var(--color-red);
+    border-style: solid;
+    box-shadow: 0 0 3px -1px var(--color-red) ;
+}
+.btn-warning {
+    border-color: #FFAF20;
+    color: var(--color-orange);
+    font-size: 1.1rem;
+    border-style: solid;
+}
+.btn-warning:hover, .btn-warning:focus {
+    color: #fff;
+    background-color: var(--color-orange);
+    border-style: solid;
+    box-shadow: 0 0 3px -1px var(--color-orange) ;
+}
+
+.btn.link {
+    border: none;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------
+    Modal - General
+-------------------------------------------------------------------- */
+
+.modal-background {
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    min-height: 100vh;
+    z-index: 2000;
+}
+.modal {
+    background-color: #fff;
+    min-width: 600px;
+    max-width: 700px;
+    margin-block: 2rem;
+    box-shadow: 0 0 5px -1px #000;
+}
+.modal.remove {
+    animation-name: toDown;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.modal > .title {
+    text-align: center;
+    width: 100%;
+    font-size: 1.7rem;
+    font-weight: 500;
+    font-family: Segoe UI;
+    box-shadow: 0 14px 2px -13px rgba(255, 0, 0, 1);
+    margin: 0;
+    padding-block: 0.3rem;
+}
+.modal > p.content {
+    width: 100%;
+    text-align: center;
+    font-family: Segoe UI;
+    font-size: 1.1rem;
+}
+.modal > .buttons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-block: 0 1rem;
+    gap: 15px;
+}
+
+/* <===== ======= Modal cambiar contraseña ======= =====> */
+
+.passwordModal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.passwordModal > div.content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0 3rem;
+}
+.passwordModal > .buttons-container {
+    padding: 0 3rem;
+    flex-wrap: wrap;
+}
+.passwordModal > .buttons-container > .btn {
+    flex: 1 1 auto;
+}
+
+/* <===== ======= Modal - Informacion producto ======= =====> */
+
+.productModal {
+    max-width: 70vw;
+    width: 70vw;
+}
+.productModal > .title {
+    font-size: 2rem;
+    font-family: Georgia;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: var(--color-red);
+}
+.productModal .basic {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+.productModal .basic > .product_img {
+    flex: 1 1 auto;
+    max-width: 60%;
+}
+.productModal .basic > .product_img > img {
+    width: 100%;
+    height: 100%;
+    min-width: 415px;
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 0 4px -1px #aaa;
+}
+.productModal .basic > .text {
+    width: 100%;
+    flex: 1 1 max-content;
+}
+.productModal .basic > .text > p {
+    display: flex;
+    flex-direction: column;
+    font-family: Segoe UI;
+}
+.productModal .basic > .text > p > b {
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding: 0.3rem 0.5rem;
+    box-shadow: -4px 0px 3px -3px #f00;
+}
+.productModal .basic > .text > p > span {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1.2rem;
+    font-size: 1.1rem;
+}
+.productModal .extra {
+    padding-inline: 1rem;
+    font-family: Segoe UI;
+}
+.productModal .extra > p > b {
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+.productModal .buttons-container {
+    padding-inline: 1rem;
+}
+
+.productModal .buttons-container > .btn {
+    flex: 1 1 auto;
+}
+
+.newProduct {
+    max-width: 70vw;
+    width: initial;
+    font-family: Calibri;
+}
+
+/* <===== ======= Modal - Crear producto ======= =====> */
+
+form.productModal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+form.productModal > .content {
+    padding-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+form.productModal > .content input[type=file]{
+    display: none;
+}
+
+
+/* --------------------------------------------------------------------
+    Pagina Welcome - All
+-------------------------------------------------------------------- */
+
+.page-welcome {
+
+}
+.page-welcome > h1 {
+    margin: 0;
+    padding: 0.3rem;
+    color: #fff;
+    text-align: center;
+    background-color: var(--color-red);
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.page-welcome > .nav-horizontal {
+    box-shadow: 0 4px 2px -3px var(--color-red);
+}
+.page-welcome > p {
+
+}
+.page-welcome > .welcome-content {
+    width: 70%;
+    margin: 0 auto;
+    font-family: Segoe UI;
+    font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------
+    Pagina 404 - Not found
+-------------------------------------------------------------------- */
+
+.page-404 {
+    font-family: Cambria Math;
+    width: max-content;
+    margin: 2rem auto;
+}
+.page-404 > h1 {
+    width: 600px;
+    text-align: center;
+    box-shadow: 0 20px 2px -18px #f00;
+    padding: 5px;
+    font-size: 2rem;
+    font-weight: 100;
+}
+.page-404 > p {
+    width: 100%;
+    text-align: center;
+    font-family: segoe UI;
+}
+
+/* --------------------------------------------------------------------
+    Pagina session - Ingresar/Registrarse
+-------------------------------------------------------------------- */
+
+.page-session {
+
+}
+.page-session > form {
+    width: 40rem;
+    margin: 2rem auto;
+}
+.form-session {
+    box-shadow: 0 0 4px -1px #777;
+    /* border: 1px solid #f00; */
+    /* border-radius: 0.5rem; */
+}
+.form-session > .title > h2 {
+    font-family: Segoe UI;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 0.3rem 0;
+    color: #fff;
+    background-color: #f00;
+    border-radius: 0 0 90px 90px;
+    text-transform: uppercase;
+}
+.form-session > .content {
+    padding: 0 1rem;
+    margin-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.form-session > .buttons-container {
+    padding: 0rem 1rem 1rem 1rem ;
+}
+.form-session > .buttons-container > .btn {
+    min-width: 200px;
+}
+.form-session > .buttons-container > a.btn:hover, .form-session > .buttons-container > a.btn:focus {
+    /* text-decoration: none; */
+    text-shadow: 0 0 1px #f00;
+    width: max-content;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-red);
+}
+
+/* --------------------------------------------------------------------
+    Pagina products - Productos usuarios
+-------------------------------------------------------------------- */
+
+.page-products{
+    /*height: 2000px;*/
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: minmax(70px, max-content);
+    grid-auto-rows: 200px;
+    gap: 15px ;
+}
+.page-products .filter-bar{
+    grid-column: 1 / -1;
+    display: flex;
+    padding: 0.5rem ;
+    border: 1px solid #aaa;
+    box-shadow: 0 3px 3px -3px #888;
+    /*justify-content: space-evenly;*/
+    box-shadow: 15px 15px 2px -14px #aaa, -15px -15px 2px -14px #aaa;
+    flex-wrap: wrap;
+    height: max-content;
+    gap: 5px;
+}
+.page-products .filter-bar > .search-input-container {
+    /*width: 100%;*/
+    /*flex-basis: 70%;*/
+    flex: 1 1 auto;
+    min-width: 400px;
+    height: 100%;
+}
+.page-products  .filter-bar .field-input-container{
+    /*height: 100%;*/
+    border-color: #eee;
+}
+.page-products  .filter-bar .field-input-container:focus-within {
+    border-style: solid;
+    border-color: rgba(255, 0, 0, 1); !important;
+    box-shadow: none;
+}
+.page-products .filter-bar > .buttons-container, .page-products > .filter-bar > .buttons-container > .btn {
+    min-height: 100%;
+    height: 100%;
+}
+.page-products  .filter-bar > .buttons-container > .btn {
+    height: 34px;
+}
+.product-container {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 4px -1px #444;
+    transition: 0.3s box-shadow;
+    text-decoration: none;
+    outline: none;
+}
+.product-container:hover, .product-container:focus {
+    box-shadow: 17px 17px 2px -14px var(--color-red), -17px -17px 2px -14px var(--color-red), 0 0 4px -1px #444;
+}
+.product-container > img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.product-container > span {
+    width: 100%;
+    position: absolute;
+    background-color: rgb(210, 0, 0, 0.8);
+    padding: 0.4rem 0.3rem;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    font-family: Segoe UI;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1.0rem;
+    text-shadow: 0 1px 0 #000;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* --------------------------------------------------------------------
+    Pagina products - Productos Administrador
+-------------------------------------------------------------------- */
+
+.page-products-admin {
+    grid-template-rows: minmax(min-content, max-content);
+}
+.filter-bar-container {
+    grid-column: 1 / -1;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, minmax(min-content, max-content));
+    gap: 0.3rem;
+}
+.filter-bar-container .filter-bar .btn {
+    height: 36px !important;
+}
+.filter-bar-container .forms-products-admin {
+    display: flex;
+    flex-direction: column;
+}
+.filter-bar-container .forms-products-admin .btn-safe {
+    border-style: solid;
+    background-color: #F34;
+    color: #FFF;
+    font-weight: bold;
+    font-family: "Lucida sans unicode";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.filter-bar-container .forms-products-admin .btn-safe:hover {
+    background-color: #F00;
+}
+
+/* --------------------------------------------------------------------
+    Pagina products - Editar un producto
+-------------------------------------------------------------------- */
+
+.page-product-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.page-product-edit > form {
+    display: flex;
+    /*flex-direction: column;*/
+    gap: 1.2rem;
+    margin-block: 1rem;
+    box-shadow: 0 0 4px -1px #777;
+    padding: 1rem;
+    width: 1100px;
+    max-width: 80%;
+    flex-wrap: wrap;
+}
+.page-product-edit > form .field-input-container legend, .page-product-edit > form .field-input-container input, .page-product-edit > form .field-input-container textarea, .page-product-edit > form .field-input-container select {
+    font-family: Calibri;
+}
+form > .product-img-container {
+    flex: 1 1 35%;
+}
+form > .product-img-container .field-input-container {
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    font-family: Calibri;
+}
+form > .product-img-container .field-input-container legend {
+    z-index: 50;
+    position: absolute;
+    margin-inline: 0;
+    left: -1rem;
+    width: 100%;
+    padding: 0.2rem;
+    top: -5px;
+}
+form > .product-img-container .field-input-container legend > span {
+    text-align: center;
+}
+form > .product-img-container .field-input-container img {
+    min-width: 250px;
+    width: 100%;
+    height: 300px;
+    z-index: 5;
+    border-radius: 5px;
+}
+form > .product-img-container .field-input-container input[type="file"] {
+    display: none !important;
+}
+.page-product-edit > form > .product-img-container .field-input-container {
+
+}
+.page-product-edit > form > .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    flex: 1 1 60%;
+}
+.page-product-edit > form .description-container {
+    width: 100%;
+}
+.page-product-edit > form > .buttons-container {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+} 
+.page-product-edit > form > .buttons-container > .btn {
+    flex: 1 1 auto;
+}
+
+/* --------------------------------------------------------------------
+    Pagina profile - Perfil del usuario
+-------------------------------------------------------------------- */
+
+.page-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Calibri";
+}
+.page-profile > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-block: 1rem;
+    box-shadow: 0 0 4px -1px #777;
+    padding: 1rem;
+    width: 580px;
+}
+form > .user-img-container .field-input-container {
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    font-family: Calibri;
+}
+form > .user-img-container .field-input-container legend {
+    z-index: 50;
+    position: absolute;
+    margin-inline: 0;
+    left: -1rem;
+    width: 100%;
+    padding: 0.2rem;
+    top: -5px;
+}
+form > .user-img-container .field-input-container legend > span {
+    text-align: center;
+}
+form > .user-img-container .field-input-container img {
+    width: 100%;
+    height: 300px;
+    z-index: 5;
+    border-radius: 5px;
+}
+form > .user-img-container .field-input-container input[type="file"] {
+    display: none !important;
+}
+.page-profile > form > .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.page-profile > form > .content .field-input-container > legend > span {
+    text-align: center;
+}
+.page-profile > form > .buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.page-profile > form > .buttons-container > .btn {
+    flex: 1 1 auto;
+}
+
+/* --------------------------------------------------------------------
+    Pagina coachs (Entrenadores) - Usuario
+-------------------------------------------------------------------- */
+
+.coachs-container {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    border: 1px solid var(--color-red);
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+}
+.coachs-container img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+}
+.coachs-container span {
+    width: 100%;
+    position: absolute;
+    background-color: rgb(210, 0, 0, 0.8);
+    padding: 0.4rem 0.3rem;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    font-family: Segoe UI;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1.0rem;
+    text-shadow: 0 1px 0 #000;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* --------------------------------------------------------------------
+    MediaQuerys - Responsive
+-------------------------------------------------------------------- */
+
+@media (max-width: 1150px) {
+    .page-products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .page-products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 550px) {
+    .page-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .page-products .filter-bar > .search-input-container {
+        min-width: 200px;
+    }
+}

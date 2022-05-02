@@ -1,0 +1,104 @@
+/*
+* <=== ==================================================
+*    Clases generales
+* ================================================== ===>
+*/
+/* ================ Margins ================ */
+.mg-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.mg-0_5 {
+    margin: 0.5rem;
+}
+.mg-1 {
+    margin: 1rem;
+}
+.mg-2 {
+    margin: 2rem;
+}
+.mg-3 {
+    margin: 3rem;
+}
+.mg-4 {
+    margin: 4rem;
+}
+.mgL-3 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+.mgL-4 {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+.mgL-5 {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+/* ================ paddings ================ */
+.pd-0_5 {
+ padding: 0.5rem;
+}
+.pd-1 {
+ padding: 1rem;
+}
+.pd-2 {
+ padding: 2rem;
+}
+.pd-3 {
+ padding: 3rem;
+}
+.pd-4 {
+ padding: 4rem;
+}
+/* ================ Widths ================ */
+.wt-10 {
+ width: 10rem;
+}
+.wt-20 {
+ width: 20rem;
+}
+.wt-30 {
+ width: 30rem;
+}
+.wt-40 {
+ width: 40rem;
+}
+.wt-50 {
+ width: 50rem;
+}
+.wt-60 {
+ width: 60rem;
+}
+.wt-70 {
+ width: 70rem;
+}
+/* ================ Flex ================ */
+.fx-column {
+    display: flex;
+    flex-direction: column;
+}
+.fx-fullCenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+/* ================ Font-Awesome Extras ================ */
+
+.fa-solid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fa-Sxl {
+  font-size: 3em;
+  line-height: 0.04167em;
+  vertical-align: -0.125em; }
+.fa-Sxxl {
+  font-size: 4em;
+  line-height: 0.04167em;
+  vertical-align: -0.125em; }
+.fa-SSxl {
+  font-size: 6em;
+  line-height: 0.04167em;
+  vertical-align: -0.125em; }
